@@ -1,0 +1,44 @@
+<div class="row bg-special-color">
+
+  <div class="jumbotron bg-transparent w-100 mb-0">
+    <div class="container">
+
+      <div class="col-md-12">
+        <h1 class="font-white font-weight-light pt-5">
+          Simplify Your Links
+        </h1>
+      </div>
+
+      <div class="col-md-12 m-auto">
+        <form class="w-100">
+          <div class="form-row">
+            <div class="col-6">
+              <input class="form-control" type="url" #url_textbox
+                     placeholder="Paste your Original URL here.">
+            </div>
+            <div class="col">
+              <button type="button" (click)="generateUrl(url_textbox.value)" class="btn btn-light">SHORTEN URL</button>
+            </div>
+          </div>
+          <div class="w-100 pt-3" *ngIf="_gotResult">
+            <div class="form-row">
+              <div class="col-2">
+                <label for="shortURL" class="text-white col-form-label font-italic col-form-label-sm">Your Short URL
+                  is:</label>
+              </div>
+              <div class="col-10">
+                <div class="form-row">
+                  <input type="url" class="form-control form-control-sm bg-info col-5" [value]="_shortenedUrl" #shortUrlText id="shortURL"
+                         readonly>
+                  <button type="button" (click)="copyUrlToClipBoard(shortUrlText)" class="btn btn-dark btn-sm col-3" >Copy Short URL</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+</div>
