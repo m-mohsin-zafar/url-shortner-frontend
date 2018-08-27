@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+//@import "node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
 .bg-beige{
   /*background-color: beige;*/
   background-color: #03DAC6;
@@ -32,3 +33,6 @@ body, html {
   background-blend-mode: screen, overlay;
 }
 
+
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Roboto', sans-serif; }

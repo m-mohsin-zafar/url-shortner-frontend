@@ -4,7 +4,7 @@ import { UrlInfoService } from '../url-info.service';
 @Component({
   selector: 'app-url-generator',
   templateUrl: './url-generator.component.html',
-  styleUrls: ['./url-generator.component.css']
+  styleUrls: ['./url-generator.component.scss']
 })
 export class UrlGeneratorComponent implements OnInit {
 

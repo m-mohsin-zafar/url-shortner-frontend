@@ -2,13 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {UrlInfoService} from '../url-info.service';
 import {IDataList} from '../models/IDataList';
-import * as Chart from 'chart.js';
-// import { Chart } from 'chart.js';
+import { Chart } from 'chart.js';
 
 @Component({
   selector: 'app-url-dashboard-analytics',
   templateUrl: './url-dashboard-analytics.component.html',
-  styleUrls: ['./url-dashboard-analytics.component.css']
+  styleUrls: ['./url-dashboard-analytics.component.scss']
 })
 export class UrlDashboardAnalyticsComponent implements OnInit {
 
@@ -32,18 +31,24 @@ export class UrlDashboardAnalyticsComponent implements OnInit {
     });
     this._urlInfoService.getTotalClicksByYearById(this._urlId).subscribe(data => {
       this._ByYearClicksDataList = data;
+      const allYears = [];
+      this._ByYearClicksDataList.clickLabels.forEach((res) => {
+        const jsdate = new Date(res);
+        allYears.push(jsdate.getFullYear());
+      });
       console.log(data);
-      this.populateLineChart(this._ByYearClicksDataList.clickLabels, this._ByYearClicksDataList.clickValues);
+      console.log(allYears);
+      this.populateLineChart(allYears, this._ByYearClicksDataList.clickValues);
     });
     setTimeout(() => {
-      this.fireEventA();
+      this.callBrowserDataService();
     }, 400);
     setTimeout(() => {
       this.callPlatformDataService();
     }, 800);
   }
 
-  private fireEventA() {
+  private callBrowserDataService() {
     this._urlInfoService.getBrowserClicks(this._urlId).subscribe(data => {
       this._BrowserClicksDataList = data;
       console.log(data);
@@ -162,12 +167,14 @@ export class UrlDashboardAnalyticsComponent implements OnInit {
   }
 
   populatePiChart(labelList: any, valueList: any) {
-    this.myPieChart= new Chart('PieChart', {
+    this.myPieChart = new Chart('PieChart', {
       type: 'pie',
       data: {
         datasets: [{
           data: valueList,
-          backgroundColor: ['RosyBrown', 'RoyalBlue', 'AliceBlue', 'Blue', 'BlueViolet'],
+          backgroundColor: ['#90A4AE', '#546E7A', '#37474F', '#4E342E', '#212121'],
+          borderColor: '#263238',
+          borderWidth: 1,
         }],
         labels: labelList
       },

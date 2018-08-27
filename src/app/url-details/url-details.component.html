@@ -3,24 +3,25 @@
     <div class="col-1"></div>
     <div class="col-10 table-responsive-sm pt-2" id="urlsTableDiv">
       <table class="table bg-gradient-table table-bordered shadow-effect table-hover" id="url-detail-list">
-        <thead>
-        <tr class="font-weight-bold text-md-center">
+        <thead >
+        <tr class="font-weight-bold text-md-left">
           <th>Original URL</th>
-          <th>Date Created</th>
+          <th>Created</th>
           <th>Short URL</th>
           <th>All Clicks</th>
         </tr>
         </thead>
         <tbody id="url-table-body">
-          <tr *ngFor="let url of _urlData">
-            <td><a class="text-dark" routerLink="/analytics/{{url.id}}">{{url.originalUrl}}</a></td>
-            <td>{{url.dateCreated | date}}</td>
-            <td><a class="text-dark" href="#">{{url.shortUrl}}</a></td>
-            <td>{{url.grandSum}}</td>
-          </tr>
+        <tr *ngFor="let url of _urlData">
+          <td width="50%"><a class="text-dark" routerLink="/analytics/{{url.id}}">{{url.originalUrl}}</a></td>
+          <td width="10%">{{url.dateCreated | date: 'MM/dd/yyyy'}}</td>
+          <td width="30%"><a class="text-dark" (click)="onClickShortUrl(url.id)">{{url.shortUrl}}</a></td>
+          <td width="10%">{{url.grandSum | number:0}}</td>
+        </tr>
         </tbody>
       </table>
     </div>
     <div class="col-1"></div>
   </div>
 </div>
+

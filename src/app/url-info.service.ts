@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {IUrlData} from './models/iurldata';
 import {IDataList} from './models/IDataList';
+import {IMessage} from './models/imessage';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,7 @@ export class UrlInfoService {
   private _getTotalClicksByYearByIdUrl = 'http://localhost:8080/qrapi/api/v1/url/byyearclicks';
   private _getBrowserClicksUrl = 'http://localhost:8080/qrapi/api/v1/url/browserclicks';
   private _getPlatformClicksUrl = 'http://localhost:8080/qrapi/api/v1/url/platformclicks';
+  private _getOriginalUrlAfterVerificationUrl = 'http://localhost:8080/qrapi/api/v1/url/verifynroute';
   private _originalUrlObject;
 
   constructor(private http: HttpClient) {
@@ -60,6 +62,13 @@ export class UrlInfoService {
     return this.http.get<IDataList>(this._getPlatformClicksUrl,
       {params: {
           id: id
+        }});
+  }
+
+  getOriginalUrlAfterVerification(id): Observable<IMessage> {
+    return this.http.get<IMessage>(this._getOriginalUrlAfterVerificationUrl,
+      {params: {
+        id: id
         }});
   }
 }

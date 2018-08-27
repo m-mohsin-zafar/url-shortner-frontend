@@ -4,7 +4,7 @@ import {CommonChecks} from '../common-checks';
 @Component({
   selector: 'app-url-dashboard',
   templateUrl: './url-dashboard.component.html',
-  styleUrls: ['./url-dashboard.component.css']
+  styleUrls: ['./url-dashboard.component.scss']
 })
 export class UrlDashboardComponent implements OnInit {
 
