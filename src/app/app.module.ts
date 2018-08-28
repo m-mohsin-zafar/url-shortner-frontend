@@ -15,6 +15,7 @@ import { UrlDashboardHeaderComponent } from './url-dashboard-header/url-dashboar
 import { UrlDashboardAnalyticsComponent } from './url-dashboard-analytics/url-dashboard-analytics.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material';
 import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
 
 @NgModule({
@@ -33,7 +34,8 @@ import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatButtonModule
   ],
   entryComponents: [
     AlertDialogComponent

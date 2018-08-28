@@ -23,7 +23,8 @@ export class UrlDetailsComponent implements OnInit {
       autoFocus: true,
       position: {},
       role: 'alertdialog',
-      closeOnNavigation: true
+      closeOnNavigation: true,
+      panelClass: 'alert-dialog-panel'
       }
     );
 
